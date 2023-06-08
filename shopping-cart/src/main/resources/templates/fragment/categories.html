@@ -1,0 +1,13 @@
+<div class="col-12" th:fragment="categories">
+	<h4 class="display-4">Danh mục nổi bật</h4>
+	<ul class="list-group horizontal-list">
+	<!--  	<li class="list-group-item wider-item">
+			<a href="/category/all/0">All Products</a>
+		</li>
+		-->
+		<li class="list-group-item wider-item" th:each="category: ${ccategories}">
+			<a class="nav-link" th:href="@{'/category/'+${category.slug}}+'/0'" th:text="${category.name}"></a>
+		</li>
+	</ul>
+	
+</div>
