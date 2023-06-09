@@ -13,8 +13,15 @@ import lombok.NoArgsConstructor;
 @Table(name="user")
 public class User {
 	@Id
+	private String id;
 	private String userId;
 	private String password;
+	private String name;
+	private String email;
+	private String cpassword;
+	private String phone;
+	private String gender;
+	
 	
 
 }

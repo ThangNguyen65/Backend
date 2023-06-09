@@ -34,13 +34,32 @@ import com.abhishek.repo.UserRepo;
 
 		String userId=user.getUserId();
 		Optional<User> userdata= repo.findById(userId);
+		
+
 	   if(user.getPassword().equals(userdata.get().getPassword())) {
 		   return "redirect:/";
 	   }else {
 		   return"error";
 	   }
+	   
+	 
 		
 	}
+	@GetMapping("/register")
+	public String register(Model model) {
+		User user = new User();
+		model.addAttribute("user",user);
+		return"register";
+	}
+	@PostMapping("/register")
+	public String registerUser(@ModelAttribute("user") User user) {
+	    // Xử lý đăng ký
+	    System.out.println(user);
+	    repo.save(user); // Lưu thông tin người dùng vào cơ sở dữ liệu
+	    return "redirect:/login"; // Chuyển hướng đến trang đăng nhập sau khi đăng ký thành công
+	}
+
+
 
 	
 
