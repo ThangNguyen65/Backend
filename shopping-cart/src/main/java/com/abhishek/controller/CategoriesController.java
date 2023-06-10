@@ -36,8 +36,8 @@ public class CategoriesController {
 	@GetMapping("/{slug}/{page}")
 	public String category(@PathVariable("slug") String slug, @PathVariable("page") Integer p, Model model) {
 		
-		int perPage = 3;
-		int page = (p != null) ? p : 0;
+		int perPage = 5;
+		int page = (p != null) ? p :0;
 		Pageable pageable = PageRequest.of(page, perPage);
 		
 		long count=0;

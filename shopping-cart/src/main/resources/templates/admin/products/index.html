@@ -7,8 +7,8 @@
 	<nav th:replace="/fragment/nav :: nav-admin"></nav>
 	<!-- /container -->
 	<div class="container">
-		<h1 class="display-2">Products</h1>
-		<a href="/admin/products/add" class="btn btn-primary mb-5">Add New</a>
+		<h1 class="text-center text-uppercase mt-3">Sản phẩm</h1>
+		<a href="/admin/products/add" class="btn btn-primary mb-3 mt-2">Thêm mới</a>
 
 		<div th:if="${message}" th:text="${message}"
 			th:class="${'alert '+alertClass}"></div>
@@ -16,27 +16,31 @@
 		<div th:if="${!products.empty}">
 			<table class="table">
 				<tr>
-					<th>Name</th>
-					<th>Image</th>
-					<th>Category</th>
-					<th>Price</th>
-					<th>Edit</th>
-					<th>Delete</th>
+					<th>Mã sản phẩm</th>
+					<th>Tên sản phẩm</th>
+					<th>Hình ảnh sản phẩm</th>
+					<th>Loại sản phẩm</th>
+					<th>Giá Tiền</th>
+					<th>Hành Động</th>
 				</tr>
 				<tr th:each="product : ${products}">
+					<td th:text="${product.id}"></td>
 					<td th:text="${product.name}"></td>
 					<td><img style="width: 80px; height: 80px;" alt=""
 						th:src="@{'/media/'+${product.image}}"></td>
 					<!-- <td th:text="${product.categoryId}"></td> -->
 					<td th:text="${cats[__${product.categoryId}__]}"></td>
-					<td th:text="'$ '+${product.price}"></td>
-					<td><a th:href="@{'/admin/products/edit/'+${product.id}}">Edit</a></td>
-					<td><a th:href="@{'/admin/products/delete/'+${product.id}}"
-						class="confirmDeletion">Delete</a></td>
+					<td th:text="${product.price}+'đ'"></td>
+					<td>
+						<a class="btn btn-info text-uppercase" 
+						th:href="@{'/admin/products/edit/'+${product.id}}">Sửa sản phẩm</a>
+						<a th:href="@{'/admin/products/delete/'+${product.id}}"
+						class="confirmDeletion btn btn-danger text-uppercase">Xóa Sản phẩm</a>
+					</td>
 				</tr>
 			</table>
 
-			<nav aria-label="Page navigation example" th:if="${count > perPage}">
+			<nav aria-label="Page navigation example" th:if="${count > perPage}" style="margin-left:360px">
 
 				<ul class="pagination">
 
@@ -52,19 +56,12 @@
 					<li th:if="${page+1 != totalPages}" class="page-item"><a
 						th:href="@{'/admin/products/'+${page+1}}" class="page-link"
 						href="#">Next</a></li>
-
 				</ul>
-
 			</nav>
-
 		</div>
-
 		<div th:unless="${!products.empty}">
 			<h4 class="display-4">There are no products at this moment</h4>
 		</div>
-
 	</div>
-	<footer th:replace="/fragment/footer"></footer>
-
 </body>
 </html>

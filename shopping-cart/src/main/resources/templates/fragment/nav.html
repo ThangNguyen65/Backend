@@ -1,37 +1,37 @@
 <!-- Front-end Navbar -->
 <nav class="navbar navbar-expand-md navbar-front" th:fragment="nav-front">
-	<a class="navbar-brand" href="/">Shopping Cart</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse"
-		data-target="#navbarsExampleDefault"
-		aria-controls="navbarsExampleDefault" aria-expanded="false"
-		aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
+		<a class="navbar-brand" href="/">Mobile Store</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarsExampleDefault"
+			aria-controls="navbarsExampleDefault" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item" th:each="page: ${cpages}" th:if="${page.slug!='home'}">
-				<a class="nav-link" th:href="@{'/'+${page.slug}}" th:text="${page.title}"></a>
-			</li>
-		</ul>
-		
-		<ul class="navbar-nav">
-			<li class="nav-link">
-				<a th:href="@{/cart/view}">
-    <img id="cart" th:src="@{/images/cart.png}">
-    <span th:text="${csize}" class="cart-count" id="cartCount"></span> <!-- Hiển thị số lượng sản phẩm trong giỏ hàng -->
-</a>
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item" th:each="page: ${cpages}" th:if="${page.slug!='home'}">
+					<a class="nav-link" th:href="@{'/'+${page.slug}}" th:text="${page.title}"></a>
+				</li>
+			</ul>
+			
+			<ul class="navbar-nav">
+				<li class="nav-link">
+					<a th:href="@{/cart/view}">
+	    				<img id="cart" th:src="@{/images/cart.png}">
+	    				<span th:text="${csize}" class="cart-count" id="cartCount"></span> <!-- Hiển thị số lượng sản phẩm trong giỏ hàng -->
+					</a>
+				</li>
+			</ul>
+		</div>
 
-			</li>
-		</ul>
-	</div>
 </nav>
 
 
 
 <!-- Admin Navbar -->
 <nav class="navbar navbar-expand-md navbar-admin" th:fragment="nav-admin">
-	<a class="navbar-brand" href="/" target="_blank">Home Page</a>
+	<a class="navbar-brand" href="/" target="_blank">Mobile Store</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarsExampleDefault"
 		aria-controls="navbarsExampleDefault" aria-expanded="false"
