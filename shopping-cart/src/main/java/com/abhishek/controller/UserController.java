@@ -32,7 +32,7 @@ import com.abhishek.repo.UserRepo;
 	@PostMapping("/userLogin")
 	public String loginUser(@ModelAttribute("user") User user) {
 
-		String userId=user.getUserId();
+		String userId=user.getUsername();
 		Optional<User> userdata= repo.findById(userId);
 		
 
